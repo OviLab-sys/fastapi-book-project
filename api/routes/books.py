@@ -47,7 +47,7 @@ async def create_book(book: Book):
 async def get_books() -> OrderedDict[int, Book]:
     return db.get_books()
 
-
+#implementation of the missing get book endpoint by it's id
 @router.get("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
 async def get_book(book_id: int):
     book = db.get_book(book_id)
@@ -70,5 +70,3 @@ async def delete_book(book_id: int) -> None:
     return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
 
 
-# @router.get("/{book_id}", status_code=status.HTTP_404_NOT_FOUND)
-# async def get_book_by_id(book_id: int) -> None:
